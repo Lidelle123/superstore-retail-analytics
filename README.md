@@ -2,6 +2,7 @@
 
 An end-to-end retail analytics portfolio project: **SQL data profiling, cleaning, validation and business analysis**, followed by an interactive **Power BI** report.
 
+### 1. Dashboard overview
 ![Superstore Analytics overview](screenshots/dashboard_overview.png)
 ### 2. Dashboard with interactive filters
 ![Superstore Analytics filters](screenshots/dashboard_filtered_market.png)
@@ -16,10 +17,11 @@ An end-to-end retail analytics portfolio project: **SQL data profiling, cleaning
 - How have sales evolved from 2011 to 2014?
 
 ## Dataset and tools
-- **Source:** Superstore Orders, imported into `public.raw_superstore_orders` (21 text fields)
-- **Cleaned dataset:** `public.clean_superstore_orders` (typed fields plus `shipping_days`)
-- **Validated row count:** 51,290 sales lines and 25,035 distinct orders (based on the author's PostgreSQL results)
-- **Stack:** PostgreSQL 17, pgAdmin, SQL, Power BI Desktop, Power Query and DAX
+- **Source:** Superstore Orders dataset downloaded from **Kaggle** (add the exact dataset page URL here).
+- **Raw dataset:** Imported into `public.raw_superstore_orders` (21 text fields).
+- **Cleaned dataset:** `public.clean_superstore_orders` (typed fields, standardized dates, preserved profit precision, and derived `shipping_days`).
+- **Validated row count:** 51,290 sales lines and 25,035 distinct orders, verified in PostgreSQL.
+- **Stack:** PostgreSQL 17, pgAdmin, SQL, Power BI Desktop, Power Query and DA
 
 ## Dashboard metrics (no filters)
 | Metric | Value displayed |
@@ -49,13 +51,3 @@ The first cleaning attempt stored `profit` as `NUMERIC(14,3)`, which lost decima
 The supplied queries were deduplicated and minor pasted syntax issues fixed. Date parsing assumes **day/month/year** for both slash and dash formats, as in the author's actual scripts. Verify this assumption if applying the pipeline to another dataset.
 
 
-## Reproducing the report
-1. Create a PostgreSQL database and run `01_create_raw_table.sql`.
-2. Import the original Superstore CSV into `public.raw_superstore_orders` with matching column order and CSV settings.
-3. Run the data-quality queries, then the corrected clean-table script, then the business analyses.
-4. Open the Power BI `.pbix` and update the local PostgreSQL data-source credentials/server to refresh it.
-
-The source CSV, exported cleaned CSV and `.pbix` are **not yet included** in this starter archive. The user will add them locally. The repository's SQL and documentation do not require publishing personal information.
-
-## Data privacy and licensing
-Before committing any CSV, confirm redistribution rights and review personal fields (notably `customer_name`). If necessary, publish a privacy-safe sample or omit the CSV and provide reproduction instructions. Never commit passwords or database secrets.
