@@ -1,0 +1,16 @@
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*.json
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+~$*
+
+# Large raw datasets: review licenses and privacy before adding
+raw_data/
